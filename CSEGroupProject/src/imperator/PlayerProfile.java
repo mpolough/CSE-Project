@@ -6,9 +6,9 @@ public class PlayerProfile {
 	private String playerClass;	//Class of the player; warrior, wizard, ranger etc.
 	private int numKills;		//Variable to keep track of kills (games won).
 	private int numDeaths; 		//Variable to keep track of number of deaths (games lost).
-	private int numMoves;		//Variable to keep track of number of actions performed in a game by player.
+	private int numMoves;		//Variable to keep track of number of actions performed in all games by player.
 	private double movesPerGame;//Variable to keep track of average num of moves performed for all games.
-	private double damageDone; //Variable to keep track of the damge done in ONE game.
+	private double damageDone; //Variable to keep track of the total damage done for all games.
 	private double damageDonePerGame; //Variable to keep track of average damage done over all games. 
 	private int gamesPlayed;	//Variable to keep track of total number of games played.
 
