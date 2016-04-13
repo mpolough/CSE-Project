@@ -11,6 +11,39 @@ public class PlayerProfile {
 	private double damageDone; //Variable to keep track of the damge done in ONE game.
 	private double damageDonePerGame; //Variable to keep track of average damage done over all games. 
 	private int gamesPlayed;	//Variable to keep track of total number of games played.
+
+
+
+	//Default Constructor. Initializes names to NULL and stats to 0.	
+	public PlayerProfile() {
+		this.playerName = "NULL";
+		this.playerClass = "NULL";
+		this.numKills = 0;
+		this.numDeaths = 0;
+		this.numMoves = 0;
+		this.movesPerGame = 0;
+		this.damageDone = 0;
+		this.damageDonePerGame = 0;
+		this.gamesPlayed = 0;
+	}
+	
+	/**
+	 * Game constructor. Initializes name and class to that selected
+	 * by the player during the game initialization.
+	 * @param playerName name of the player character/profile
+	 * @param playerClass class selected by the player for the profile.
+	 */
+	public PlayerProfile(String playerName, String playerClass) {
+		this.playerName = playerName;
+		this.playerClass = playerClass;
+		this.numKills = 0;
+		this.numDeaths = 0;
+		this.numMoves = 0;
+		this.movesPerGame = 0;
+		this.damageDone = 0;
+		this.damageDonePerGame = 0;
+		this.gamesPlayed = 0;
+	}
 	
 	public String getPlayerName() {
 		return playerName;
