@@ -3,11 +3,22 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
+/**
+ * Leaderboard works by reading in the text file "leaderboard.txt", with tab delimited fields,  
+ * to create a profile object array to store the leaderboard data to be manipulated by the game.
+ * At the game end, the game will call update() to update any changes to the leaderboard, and update
+ * the text file to store these changes persistently. There is also a print() method that displays the 
+ * leaderboard.
+ * @author Chris and Fabian
+ *
+ */
 public class Leaderboard {
+	
+	private ArrayList<PlayerProfile> profileArray = new ArrayList<PlayerProfile>();
+	
 	public void writer() throws IOException{
 
 		int counter = 0;
-		ArrayList<PlayerProfile> profileArray = new ArrayList<PlayerProfile>();
 	
 		//if file found, read in all lines, loading one line of data into a profile object, and 
 		//create an array of these profile objects
@@ -46,11 +57,15 @@ public class Leaderboard {
 	    }
 	}
 	
+	//update the profile object fields for profiles that require updating.
+	public void update(){
+		
+	}
 	
-	//write method update() that will update the profile object fields for profiles that require
-	//updates. 
-	
-	//write a print() method to display the leaderboard. 
+	//print() method to display the leaderboard. 
+	public void print(){
+		
+	}
 	
 	//write sort() methods to sort the profile array on one of the stats, print that sorted array (leaderboard)
 	
