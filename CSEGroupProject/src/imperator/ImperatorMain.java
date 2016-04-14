@@ -1,11 +1,18 @@
 package imperator;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ImperatorMain 
 {
 
-	public static void main(String[] args) 
+	public static void main(String[] args) throws IOException 
 	{
+		Leaderboard obj = new Leaderboard();
+		obj.writer();
+		
+		
+		
+		
 		boolean end = false;
 		Scanner reader = new Scanner(System.in);
 		System.out.println("_________ _______  _______  _______  _______  _______ _________ _______  _______ ");
