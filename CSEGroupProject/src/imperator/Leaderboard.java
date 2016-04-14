@@ -15,6 +15,8 @@ import java.util.StringTokenizer;
 public class Leaderboard {
 	
 	private ArrayList<PlayerProfile> profileArray = new ArrayList<PlayerProfile>();
+	private int indexP1;	//keeps track of the current games player1 array index 
+	private int indexP2;	//keeps track of the current games player1 array index 
 	
 	public void writer() throws IOException{
 
@@ -57,9 +59,30 @@ public class Leaderboard {
 	    }
 	}
 	
+//	public PlayerProfile getProfile(){//fetch using player name as string or make and index variable in player 
+//		
+//	}
+	
+	/**
+	 * Monitor should be called at the game begin, to call an store the index positions of 
+	 * the desired player profiles for updating in update().
+	 * @param player1 player1's profile object
+	 * @param player2 player2's profile object
+	 */
+	public void monitor(PlayerProfile player1, PlayerProfile player2){
+		indexP1 = profileArray.indexOf(player1);
+		indexP2 = profileArray.indexOf(player2);
+	}
+	
 	//update the profile object fields for profiles that require updating.
-	public void update(){
+	public void update(PlayerProfile player1, PlayerProfile player2){
 		
+		if(indexP1 != -1 && indexP2 != -1){
+			profileArray.set(indexP1, player1);
+			profileArray.set(indexP2, player2);
+		}
+		else
+			System.out.println("Update failed. A player profile was not found.");
 	}
 	
 	//print() method to display the leaderboard. 
