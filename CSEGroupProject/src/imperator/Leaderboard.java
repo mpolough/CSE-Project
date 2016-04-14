@@ -5,15 +5,12 @@ import java.util.StringTokenizer;
 
 public class Leaderboard {
 	public void writer() throws IOException{
-		
-		
-		//try reading file "leaderboard.txt"
-//		FileInputStream in = null;
-//	    FileOutputStream out = null;
-		
+
 		int counter = 0;
 		ArrayList<PlayerProfile> profileArray = new ArrayList<PlayerProfile>();
 	
+		//if file found, read in all lines, loading one line of data into a profile object, and 
+		//create an array of these profile objects
 	    try {
 	    	FileReader in = new FileReader("leaderboard.txt");	       
 	    	BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File("leaderboard.txt"))));
@@ -23,32 +20,27 @@ public class Leaderboard {
 	    		PlayerProfile tempProfile = new PlayerProfile();
 	    		StringTokenizer tk = new StringTokenizer(s);
 	    		tempProfile.setPlayerName(tk.nextToken("\t"));
-//	    		String playerClass = tk.nextToken("\t");
 	    		tempProfile.setPlayerClass(tk.nextToken("\t"));
-//	    		int numKills = Integer.parseInt(tk.nextToken("\t"));
 	    		tempProfile.setNumKills(Integer.parseInt(tk.nextToken("\t")));
-//	    		int numDeaths = Integer.parseInt(tk.nextToken("\t"));
 	    		tempProfile.setNumDeaths(Integer.parseInt(tk.nextToken("\t")));
-//	    		int numMoves = Integer.parseInt(tk.nextToken("\t"));
 	    		tempProfile.setNumMoves(Integer.parseInt(tk.nextToken("\t")));
-//	    		double movesPerGame = Double.parseDouble(tk.nextToken("\t"));
 	    		tempProfile.setMovesPerGame(Double.parseDouble(tk.nextToken("\t")));
-//	    		double damageDone = Double.parseDouble(tk.nextToken("\t"));
 	    		tempProfile.setDamageDone(Double.parseDouble(tk.nextToken("\t")));
-//	    		double damagePerGame = Double.parseDouble(tk.nextToken("\t"));
 	    		tempProfile.setDamageDonePerGame(Double.parseDouble(tk.nextToken("\t")));
-//	    		int gamesPlayed = Integer.parseInt(tk.nextToken("\t"));
 	    		tempProfile.setGamesPlayed(Integer.parseInt(tk.nextToken("\t")));
 	    		System.out.println(s);
 
-	    		profileArray.add(counter, tempProfile);
+	    		profileArray.add(counter, tempProfile);	//Copies the profile object to the arrayList
 	    		counter++;
 	    		
 	    		System.out.println(counter + " profiles counted. Name: "+ tempProfile.getGamesPlayed());
 				
 			}
+	    	in.close();
+	    	reader.close();
 	    }
 	    
+		//if the file is not found, create empty file "leaderboard.txt"
 	    catch(IOException e){
 	    	PrintWriter writer = new PrintWriter("leaderboard.txt", "UTF-8");
 			writer.println("Fresh leaderboard");
@@ -63,10 +55,7 @@ public class Leaderboard {
 //	       }
 //	    }
 	}
-	//if file found, read in all lines, loading one line of data into a profile object, and 
-	//create an array of these profile objects
 	
-	//if the file is not found, create empty file "leaderboard.txt"
 	
 	//write method update() that will update the profile object fields for profiles that require
 	//updates. 

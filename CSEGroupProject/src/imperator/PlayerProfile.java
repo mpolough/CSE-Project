@@ -14,7 +14,7 @@ public class PlayerProfile {
 
 
 
-	//Default Constructor. Initializes names to NULL and stats to 0.	
+	//Default Constructor. Initializes name and class to NULL and stats to 0.	
 	public PlayerProfile() {
 		this.playerName = "NULL";
 		this.playerClass = "NULL";
