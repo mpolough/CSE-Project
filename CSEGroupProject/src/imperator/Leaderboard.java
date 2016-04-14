@@ -23,9 +23,7 @@ public class Leaderboard {
 	    		tempProfile.setPlayerClass(tk.nextToken("\t"));
 	    		tempProfile.setNumKills(Integer.parseInt(tk.nextToken("\t")));
 	    		tempProfile.setNumDeaths(Integer.parseInt(tk.nextToken("\t")));
-	    		tempProfile.setNumMoves(Integer.parseInt(tk.nextToken("\t")));
 	    		tempProfile.setMovesPerGame(Double.parseDouble(tk.nextToken("\t")));
-	    		tempProfile.setDamageDone(Double.parseDouble(tk.nextToken("\t")));
 	    		tempProfile.setDamageDonePerGame(Double.parseDouble(tk.nextToken("\t")));
 	    		tempProfile.setGamesPlayed(Integer.parseInt(tk.nextToken("\t")));
 	    		System.out.println(s);
@@ -46,14 +44,6 @@ public class Leaderboard {
 			writer.println("Fresh leaderboard");
 			writer.close();
 	    }
-//	    finally {
-//	       if (in != null) {
-//	          in.close();
-//	       }
-//	       if (out != null) {
-//	          out.close();
-//	       }
-//	    }
 	}
 	
 	

@@ -6,9 +6,7 @@ public class PlayerProfile {
 	private String playerClass;	//Class of the player; warrior, wizard, ranger etc.
 	private int numKills;		//Variable to keep track of kills (games won).
 	private int numDeaths; 		//Variable to keep track of number of deaths (games lost).
-	private int numMoves;		//Variable to keep track of number of actions performed in all games by player.
 	private double movesPerGame;//Variable to keep track of average num of moves performed for all games.
-	private double damageDone; //Variable to keep track of the total damage done for all games.
 	private double damageDonePerGame; //Variable to keep track of average damage done over all games. 
 	private int gamesPlayed;	//Variable to keep track of total number of games played.
 
@@ -20,9 +18,7 @@ public class PlayerProfile {
 		this.playerClass = "NULL";
 		this.numKills = 0;
 		this.numDeaths = 0;
-		this.numMoves = 0;
 		this.movesPerGame = 0;
-		this.damageDone = 0;
 		this.damageDonePerGame = 0;
 		this.gamesPlayed = 0;
 	}
@@ -38,9 +34,7 @@ public class PlayerProfile {
 		this.playerClass = playerClass;
 		this.numKills = 0;
 		this.numDeaths = 0;
-		this.numMoves = 0;
 		this.movesPerGame = 0;
-		this.damageDone = 0;
 		this.damageDonePerGame = 0;
 		this.gamesPlayed = 0;
 	}
@@ -69,24 +63,13 @@ public class PlayerProfile {
 	public void setNumDeaths(int numDeaths) {
 		this.numDeaths = numDeaths;
 	}
-	public int getNumMoves() {
-		return numMoves;
-	}
-	public void setNumMoves(int numMoves) {
-		this.numMoves = numMoves;
-	}
 	public double getMovesPerGame() {
 		return movesPerGame;
 	}
 	public void setMovesPerGame(double movesPerGame) {
 		this.movesPerGame = movesPerGame;
 	}
-	public double getDamageDone() {
-		return damageDone;
-	}
-	public void setDamageDone(double damageDone) {
-		this.damageDone = damageDone;
-	}
+
 	public double getDamageDonePerGame() {
 		return damageDonePerGame;
 	}
