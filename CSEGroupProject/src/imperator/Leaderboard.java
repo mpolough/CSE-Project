@@ -18,7 +18,7 @@ public class Leaderboard {
 	private int indexP1;	//keeps track of the current games player1 array index 
 	private int indexP2;	//keeps track of the current games player1 array index 
 	
-	public void writer() throws IOException{
+	public void reader() throws IOException{
 
 		int counter = 0;
 	
@@ -43,9 +43,7 @@ public class Leaderboard {
 
 	    		profileArray.add(counter, tempProfile);	//Copies the profile object to the arrayList
 	    		counter++;
-	    		
-	    		System.out.println(counter + " profiles counted. Name: "+ tempProfile.getGamesPlayed());
-				
+	    	
 			}
 	    	in.close();
 	    	reader.close();
@@ -74,6 +72,19 @@ public class Leaderboard {
 		indexP2 = profileArray.indexOf(player2);
 	}
 	
+	public PlayerProfile getProfile(String playerName){
+		int profileIndex = 0;
+		for(int index = 0; index <= profileArray.size(); index++){
+			PlayerProfile tempProfile = new PlayerProfile();
+			tempProfile = profileArray.get(index);
+			if(tempProfile.getPlayerName().equals(playerName)){
+				profileIndex = index;
+			}
+		}
+		return(profileArray.get(profileIndex));
+	}
+	
+	
 	//update the profile object fields for profiles that require updating.
 	public void update(PlayerProfile player1, PlayerProfile player2){
 		
@@ -87,8 +98,42 @@ public class Leaderboard {
 	
 	//print() method to display the leaderboard. 
 	public void print(){
+		System.out.println(profileArray.toString());
+	}
+	
+	//write array to leaderboard.txt file
+	public void writer() throws IOException{
+		File file = new File("leaderboard.txt");
+		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+		BufferedWriter bw = new BufferedWriter(fw);
+		String leaderboard = "";
+		
+		for(int index = 0; index < profileArray.size(); index++){
+			PlayerProfile tempProfile = profileArray.get(index);
+			String name = tempProfile.getPlayerName();
+			String playerClass = tempProfile.getPlayerClass();
+			int numKills = tempProfile.getNumKills();
+			int numDeaths = tempProfile.getNumDeaths();
+			double movesPerGame = tempProfile.getMovesPerGame();
+			double damageDonePerGame = tempProfile.getDamageDonePerGame();
+			int gamesPlayed = tempProfile.getGamesPlayed();
+			
+			leaderboard += name + "\t" + playerClass + "\t" + numKills + "\t" + numDeaths + "\t" +
+					movesPerGame + "\t" + damageDonePerGame + "\t" + gamesPlayed + "\n";
+		}
+		
+
+		bw.write(leaderboard);
+		bw.close();
+
+		System.out.println("Done");
 		
 	}
+	
+	public void addNewProfile(PlayerProfile newPlayer){
+		profileArray.add(newPlayer);
+	}
+	
 	
 	//write sort() methods to sort the profile array on one of the stats, print that sorted array (leaderboard)
 	

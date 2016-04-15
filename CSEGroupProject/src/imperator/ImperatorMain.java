@@ -8,6 +8,7 @@ public class ImperatorMain
 	public static void main(String[] args) throws IOException 
 	{
 		Leaderboard obj = new Leaderboard();
+		obj.reader();
 		obj.writer();
 		
 		
