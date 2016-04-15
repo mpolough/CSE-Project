@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  * At the game end, the game will call update() to update any changes to the leaderboard, and update
  * the text file to store these changes persistently. There is also a print() method that displays the 
  * leaderboard.
- * @author Chris and Fabian
+ * @author Chris Ward and Fabian Hinojosa
  *
  */
 public class Leaderboard {
