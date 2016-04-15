@@ -1,0 +1,14 @@
+package imperator;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class PlayerProfileTest {
+
+	@Test
+	public void test() {
+		fail("Not yet implemented");
+	}
+
+}
