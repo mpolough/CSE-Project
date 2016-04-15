@@ -1,3 +1,4 @@
+package projectTeam;
 /** combatWeapon
  * 
  * @author jaafar
@@ -107,6 +108,11 @@ public class combatWeapon {
 			result = false;
 		}
 		return result;
+	}
+	
+	public static void main (String[]args){
+		combatWeapon obj1 = new combatWeapon(2, "knife", 1, 3);
+		System.out.println(obj1.getDamage());
 	}
 
 }

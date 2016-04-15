@@ -1,3 +1,4 @@
+package projectTeam;
 /** combatClass
  * 
  * @author jaafar
