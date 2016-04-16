@@ -48,18 +48,38 @@ public class LeaderboardTest {
 	}
 
 	@Test
-	public void testUpdate() {
-		fail("Not yet implemented");
+	public void testUpdate() throws IOException {
+		PlayerProfile player1 = new PlayerProfile("Joe", "Mage");
+		PlayerProfile player2 = new PlayerProfile("John", "Rogue");
+		Leaderboard board = new Leaderboard();
+		board.addNewProfile(player1);
+		board.addNewProfile(player2);
+		board.monitor(player1, player2);
+		player1.setGamesPlayed(1);
+		player2.setGamesPlayed(1);
+		board.update(player1, player2);
+		player1 = board.getProfile("Joe");
+		player2 = board.getProfile("John");
+		assertEquals(player1.getGamesPlayed(), 1);
+		assertEquals(player2.getGamesPlayed(), 1);
 	}
 
 	@Test
-	public void testPrint() {
-		fail("Not yet implemented");
+	public void testToString() {
+		PlayerProfile player1 = new PlayerProfile("Jack", "Warrior");
+		Leaderboard board = new Leaderboard();
+		board.addNewProfile(player1);
+		assertEquals("Jack	Warrior	0	0	0.0	0.0	0\n", board.toString());
 	}
 
 	@Test
-	public void testWriter() {
-		fail("Not yet implemented");
+	public void testWriter() throws IOException {
+		PlayerProfile profile = new PlayerProfile("Joe", "Mage");
+		Leaderboard board = new Leaderboard();
+		board.addNewProfile(profile);
+		board.writer();
+		board.reader();
+		assertEquals(profile, board.getProfile(profile.getPlayerName()));
 	}
 
 	@Test

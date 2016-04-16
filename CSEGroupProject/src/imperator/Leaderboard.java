@@ -129,8 +129,8 @@ public class Leaderboard {
 	/**
 	 * Print method to display the leaderboard.
 	 */
-	public void print(){
-		System.out.println(profileArray.toString());
+	public void print(Leaderboard leaderboard){
+		System.out.println(leaderboard.toString());
 	}
 	
 	/**
@@ -205,6 +205,24 @@ public class Leaderboard {
 	 */
 	public void addNewProfile(PlayerProfile newPlayer){
 		profileArray.add(newPlayer);
+	}
+	
+	public String toString(){
+		String leaderboard = "";
+		for(int index = 0; index < profileArray.size(); index++){
+			PlayerProfile tempProfile = profileArray.get(index);
+			String name = tempProfile.getPlayerName();
+			String playerClass = tempProfile.getPlayerClass();
+			int numKills = tempProfile.getNumKills();
+			int numDeaths = tempProfile.getNumDeaths();
+			double movesPerGame = tempProfile.getMovesPerGame();
+			double damageDonePerGame = tempProfile.getDamageDonePerGame();
+			int gamesPlayed = tempProfile.getGamesPlayed();
+			
+			leaderboard += name + "\t" + playerClass + "\t" + numKills + "\t" + numDeaths + "\t" +
+					movesPerGame + "\t" + damageDonePerGame + "\t" + gamesPlayed + "\n";
+		}
+		return leaderboard;
 	}
 	
 	
