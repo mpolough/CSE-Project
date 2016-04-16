@@ -5,10 +5,10 @@ import java.util.StringTokenizer;
 
 /**
  * Leaderboard works by reading in the text file "leaderboard.txt", with tab delimited fields,  
- * to create a profile object array to store the leaderboard data to be manipulated by the game.
- * At the game end, the game will call update() to update any changes to the leaderboard, and update
+ * to create a profile object array to store the leader board data to be manipulated by the game.
+ * At the game end, the game will call update() to update any changes to the leader board, and update
  * the text file to store these changes persistently. There is also a print() method that displays the 
- * leaderboard.
+ * leader board.
  * @author Chris Ward and Fabian Hinojosa
  *
  */
@@ -127,7 +127,7 @@ public class Leaderboard {
 	}
 	
 	/**
-	 * Print method to display the leaderboard.
+	 * Print method to display the leader board.
 	 */
 	public void print(Leaderboard leaderboard){
 		System.out.println(leaderboard.toString());
@@ -158,7 +158,7 @@ public class Leaderboard {
 					movesPerGame + "\t" + damageDonePerGame + "\t" + gamesPlayed + "\n";
 		}
 		
-		//Write the leaderboard string to the file.
+		//Write the leader board string to the file.
 		bw.write(leaderboard);
 		bw.close();
 
