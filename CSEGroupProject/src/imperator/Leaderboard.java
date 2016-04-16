@@ -162,10 +162,26 @@ public class Leaderboard {
 		bw.write(leaderboard);
 		bw.close();
 
-		System.out.println("Done");
+		System.out.println("Done writing");
 		
 	}
 	
+	public int getIndexP1() {
+		return indexP1;
+	}
+
+	public void setIndexP1(int indexP1) {
+		this.indexP1 = indexP1;
+	}
+
+	public int getIndexP2() {
+		return indexP2;
+	}
+
+	public void setIndexP2(int indexP2) {
+		this.indexP2 = indexP2;
+	}
+
 	/**
 	 * When the game creates a new profile, it should call this method to add the new PlayerProfile object
 	 * to the profileArray.
