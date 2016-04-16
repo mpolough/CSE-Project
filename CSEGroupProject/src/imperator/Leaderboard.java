@@ -61,7 +61,7 @@ public class Leaderboard {
 		//if the file is not found, create empty file "leaderboard.txt"
 	    catch(IOException e){
 	    	PrintWriter writer = new PrintWriter("leaderboard.txt", "UTF-8");
-			writer.println("Fresh leaderboard");
+			writer.println("Name	Class	0	0	0.0	0.0	0");
 			writer.close();
 	    }
 	}
@@ -87,9 +87,8 @@ public class Leaderboard {
 	public PlayerProfile getProfile(String playerName){
 		int profileIndex = 0;	//variable to store the index in the profileArray of the player profile.
 		boolean found = false;  //if found is false at method end, profile not found
-		
 		//search for the playerProfile, store the index.
-		for(int index = 0; index <= profileArray.size(); index++){
+		for(int index = 0; index < profileArray.size(); index++){
 			PlayerProfile tempProfile = new PlayerProfile();
 			tempProfile = profileArray.get(index);
 			if(tempProfile.getPlayerName().equals(playerName)){
@@ -97,7 +96,6 @@ public class Leaderboard {
 				found = true;
 			}
 		}
-		
 		//If profile wasn't found, return null and output error message.
 		if(!found){
 			System.out.println("Error (getProfile): Profile for " + playerName + " not found.");
