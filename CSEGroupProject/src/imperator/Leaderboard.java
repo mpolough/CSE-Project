@@ -166,18 +166,34 @@ public class Leaderboard {
 		
 	}
 	
+	/**
+	 * Returns value variable indexp1
+	 * @return indexp1
+	 */
 	public int getIndexP1() {
 		return indexP1;
 	}
 
+	/**
+	 * Sets value indexP1
+	 * @param indexP1 int value to sex p1 to.
+	 */
 	public void setIndexP1(int indexP1) {
 		this.indexP1 = indexP1;
 	}
 
+	/**
+	 * Returns value of variable indexP2
+	 * @return value of indexP2
+	 */
 	public int getIndexP2() {
 		return indexP2;
 	}
 
+	/**
+	 * Sets value of indexP2
+	 * @param indexP2
+	 */
 	public void setIndexP2(int indexP2) {
 		this.indexP2 = indexP2;
 	}
