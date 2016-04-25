@@ -183,7 +183,7 @@ public class PlayerProfile {
 	   String playerName1 = player1.getPlayerName().toUpperCase();	//Strings to hold playerNames
 	   String playerName2 = player2.getPlayerName().toUpperCase();	
 
-	   return playerName1.compareTo(playerName2);
+	   return playerName2.compareTo(playerName1);
     }};
     
     //Comparator for sorting player profile objects in ArrayList alphabetically by player class.
@@ -193,7 +193,7 @@ public class PlayerProfile {
 	   String playerClass1 = player1.getPlayerClass().toUpperCase();//Strings to hold player class
 	   String playerClass2 = player2.getPlayerClass().toUpperCase();	
 
-	   return playerClass1.compareTo(playerClass2);
+	   return playerClass2.compareTo(playerClass1);
     }};
     
     //Comparator for sorting player profile objects in ArrayList numerically by number of kills.
@@ -203,7 +203,7 @@ public class PlayerProfile {
 	   int playerKills1 = player1.getNumKills();//Integers to hold player kills
 	   int playerKills2 = player2.getNumKills();	
 
-	   return playerKills1 - playerKills2;
+	   return playerKills2 - playerKills1;
     }};
     
     //Comparator for sorting player profile objects in ArrayList numerically by number of deaths.
@@ -213,7 +213,7 @@ public class PlayerProfile {
 	   int playerDeaths1 = player1.getNumDeaths();//Integers to hold player deaths
 	   int playerDeaths2 = player2.getNumDeaths();	
 
-	   return playerDeaths1 - playerDeaths2;
+	   return playerDeaths2 - playerDeaths1;
     }};
     
     //Comparator for sorting player profile objects in ArrayList numerically by number of moves per game.
@@ -225,7 +225,7 @@ public class PlayerProfile {
 	   playerMoves1 *= 10000;//change sigfigs to reduce int cast error in return statement.
 	   playerMoves2 *= 10000;
 
-	   return (int) (playerMoves1 - playerMoves2);
+	   return (int) (playerMoves2 - playerMoves1);
     }};
 
     //Comparator for sorting player profile objects in ArrayList numerically by damage done per game.
@@ -237,7 +237,7 @@ public class PlayerProfile {
 	   playerDamage1 *= 10000;//change sigfigs to reduce int cast error in return statement.
 	   playerDamage2 *= 10000;
 
-	   return (int) (playerDamage1 - playerDamage2);
+	   return (int) (playerDamage2 - playerDamage1);
     }};
     
     //Comparator for sorting player profile objects in ArrayList numerically by damage done per game.
@@ -247,7 +247,7 @@ public class PlayerProfile {
 	   int playerGamesPlayed1 = player1.getGamesPlayed();//Integers to hold damage done.
 	   int playerGamesPlayed2 = player2.getGamesPlayed();	
 
-	   return playerGamesPlayed1 - playerGamesPlayed2;
+	   return playerGamesPlayed2 - playerGamesPlayed1;
     }};
 	
 }

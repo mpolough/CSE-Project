@@ -236,36 +236,49 @@ public class Leaderboard {
 	 * @param token String to pass the name of the field for sorting by.
 	 */
 	public void sort(String token){
-		
+		int sorted = 0;
 		//Sort based on player name.
-		if(token == "name")
+		if(token == "name"){
 			Collections.sort(profileArray, PlayerProfile.nameComparator);
+			sorted++;
+		}
 		
 		//sort based on player class.
-		if(token == "class")
+		if(token == "class"){
 			Collections.sort(profileArray, PlayerProfile.classComparator);
+			sorted++;
+		}
 		
 		//sort based on player kills.
-		if(token == "numKills")
+		if(token == "numKills"){
 			Collections.sort(profileArray, PlayerProfile.killsComparator);
+			sorted++;
+		}
 		
 		//sort based on number of player deaths.
-		if(token == "numDeaths")
+		if(token == "numDeaths"){
 			Collections.sort(profileArray, PlayerProfile.deathsComparator);
+			sorted++;
+		}
 		
 		//sort based on damage done per game by player.
-		if(token == "damagePerGame")
+		if(token == "damagePerGame"){
 			Collections.sort(profileArray, PlayerProfile.damagePerGameComparator);
+			sorted++;	
+		}
 		
 		//sort based on number of player moves per game.
-		if(token == "movesPerGame")
+		if(token == "movesPerGame"){
 			Collections.sort(profileArray, PlayerProfile.movesPerGameComparator);
-		
+			sorted++;
+		}
 		//sort based on number of games played by player.
-		if(token == "gamesPlayed")
+		if(token == "gamesPlayed"){
 			Collections.sort(profileArray, PlayerProfile.numGamesComparator);
+			sorted++;	
+		}
 		
-		else
+		if(sorted == 0)
 			System.out.println("Error in sort: field passed not recognized.");
 
 	}
