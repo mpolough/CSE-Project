@@ -89,5 +89,23 @@ public class LeaderboardTest {
 		board.writer();
 		assertEquals(profile, board.getProfile(profile.getPlayerName()));
 	}
+	
+	@Test
+	public void testSortName() throws IOException {
+		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
+		
+		Leaderboard board = new Leaderboard();
+		board.addNewProfile(player1);
+		board.addNewProfile(player2);
+		board.addNewProfile(player3);
+		
+		board.sort("name");
+		String testString = "Allison	Warrior	3	3	2.6	2.6	3"
+				+ "\nJim	Mage	1	1	1.0	1.0	1"
+				+ "\nXander	Rogue	2	2	2.5	2.5	2\n";
+		assertEquals(testString,board.toString());
+	}
 
 }

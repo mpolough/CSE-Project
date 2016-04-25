@@ -1,6 +1,8 @@
 package imperator;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.StringTokenizer;
 
 /**
@@ -225,7 +227,48 @@ public class Leaderboard {
 		return leaderboard;
 	}
 	
-	
+	/**
+	 * Sorts the profile array list based on a string input of the 
+	 * parameter for the leader board to be sorted by. Possible inputs are
+	 * "name" for alphabetic sorting of player name, "class" for player class, and
+	 * numeric sorting for "numKills", "numDeaths", "damagePerGame", "movesPerGame", 
+	 * and "gamesPlayed"
+	 * @param token String to pass the name of the field for sorting by.
+	 */
+	public void sort(String token){
+		
+		//Sort based on player name.
+		if(token == "name")
+			Collections.sort(profileArray, PlayerProfile.nameComparator);
+		
+		//sort based on player class.
+		if(token == "class")
+			Collections.sort(profileArray, PlayerProfile.classComparator);
+		
+		//sort based on player kills.
+		if(token == "numKills")
+			Collections.sort(profileArray, PlayerProfile.killsComparator);
+		
+		//sort based on number of player deaths.
+		if(token == "numDeaths")
+			Collections.sort(profileArray, PlayerProfile.deathsComparator);
+		
+		//sort based on damage done per game by player.
+		if(token == "damagePerGame")
+			Collections.sort(profileArray, PlayerProfile.damagePerGameComparator);
+		
+		//sort based on number of player moves per game.
+		if(token == "movesPerGame")
+			Collections.sort(profileArray, PlayerProfile.movesPerGameComparator);
+		
+		//sort based on number of games played by player.
+		if(token == "gamesPlayed")
+			Collections.sort(profileArray, PlayerProfile.numGamesComparator);
+		
+		else
+			System.out.println("Error in sort: field passed not recognized.");
+
+	}
 	//write sort() methods to sort the profile array on one of the stats, print that sorted array (leaderboard)
 	
 }

@@ -1,7 +1,9 @@
 package imperator;
+import java.util.Comparator;
 /**
  * PlayerProfile class to manage the stats, name, and class of created character profile.
- * @author Chris Ward and Fabian Hanojosa
+ * @author Chris Ward
+ * @author Fabian Hanojosa
  *
  */
 public class PlayerProfile {
@@ -39,6 +41,27 @@ public class PlayerProfile {
 		this.movesPerGame = 0;
 		this.damageDonePerGame = 0;
 		this.gamesPlayed = 0;
+	}
+	
+	/**
+	 * Test/debugging constructor for setting all fields upon creation of object.
+	 * @param playerName	Name of test profile.
+	 * @param playerClass	Class of test profile.
+	 * @param numKills	Some value to set kills to.
+	 * @param numDeaths	Some value to set deaths to.
+	 * @param moves	Some value to set moves to.
+	 * @param damage	Some value to set damage to.
+	 * @param gamesPlayed	Some value to set games played to.
+	 */
+	public PlayerProfile(String playerName, String playerClass, int numKills, int numDeaths, 
+			double moves, double damage, int gamesPlayed) {
+		this.playerName = playerName;
+		this.playerClass = playerClass;
+		this.numKills = numKills;
+		this.numDeaths = numDeaths;
+		this.movesPerGame = moves;
+		this.damageDonePerGame = damage;
+		this.gamesPlayed = gamesPlayed;
 	}
 	
 	/**
@@ -152,5 +175,79 @@ public class PlayerProfile {
 	public void setGamesPlayed(int gamesPlayed) {
 		this.gamesPlayed = gamesPlayed;
 	}
+	
+	//Comparator for sorting player profile objects in ArrayList alphabetically by player name.
+    public static Comparator<PlayerProfile> nameComparator = new Comparator<PlayerProfile>(){
+
+	public int compare(PlayerProfile player1, PlayerProfile player2){
+	   String playerName1 = player1.getPlayerName().toUpperCase();	//Strings to hold playerNames
+	   String playerName2 = player2.getPlayerName().toUpperCase();	
+
+	   return playerName1.compareTo(playerName2);
+    }};
+    
+    //Comparator for sorting player profile objects in ArrayList alphabetically by player class.
+    public static Comparator<PlayerProfile> classComparator = new Comparator<PlayerProfile>(){
+
+	public int compare(PlayerProfile player1, PlayerProfile player2){
+	   String playerClass1 = player1.getPlayerClass().toUpperCase();//Strings to hold player class
+	   String playerClass2 = player2.getPlayerClass().toUpperCase();	
+
+	   return playerClass1.compareTo(playerClass2);
+    }};
+    
+    //Comparator for sorting player profile objects in ArrayList numerically by number of kills.
+    public static Comparator<PlayerProfile> killsComparator = new Comparator<PlayerProfile>(){
+
+	public int compare(PlayerProfile player1, PlayerProfile player2){
+	   int playerKills1 = player1.getNumKills();//Integers to hold player kills
+	   int playerKills2 = player2.getNumKills();	
+
+	   return playerKills1 - playerKills2;
+    }};
+    
+    //Comparator for sorting player profile objects in ArrayList numerically by number of deaths.
+    public static Comparator<PlayerProfile> deathsComparator = new Comparator<PlayerProfile>(){
+
+	public int compare(PlayerProfile player1, PlayerProfile player2){
+	   int playerDeaths1 = player1.getNumDeaths();//Integers to hold player deaths
+	   int playerDeaths2 = player2.getNumDeaths();	
+
+	   return playerDeaths1 - playerDeaths2;
+    }};
+    
+    //Comparator for sorting player profile objects in ArrayList numerically by number of moves per game.
+    public static Comparator<PlayerProfile> movesPerGameComparator = new Comparator<PlayerProfile>(){
+
+	public int compare(PlayerProfile player1, PlayerProfile player2){
+	   double playerMoves1 = player1.getMovesPerGame();//Doubles to hold player moves.
+	   double playerMoves2 = player2.getMovesPerGame();	
+	   playerMoves1 *= 10000;//change sigfigs to reduce int cast error in return statement.
+	   playerMoves2 *= 10000;
+
+	   return (int) (playerMoves1 - playerMoves2);
+    }};
+
+    //Comparator for sorting player profile objects in ArrayList numerically by damage done per game.
+    public static Comparator<PlayerProfile> damagePerGameComparator = new Comparator<PlayerProfile>(){
+
+	public int compare(PlayerProfile player1, PlayerProfile player2){
+	   double playerDamage1 = player1.getDamageDonePerGame();//Doubles to hold damage done.
+	   double playerDamage2 = player2.getDamageDonePerGame();	
+	   playerDamage1 *= 10000;//change sigfigs to reduce int cast error in return statement.
+	   playerDamage2 *= 10000;
+
+	   return (int) (playerDamage1 - playerDamage2);
+    }};
+    
+    //Comparator for sorting player profile objects in ArrayList numerically by damage done per game.
+    public static Comparator<PlayerProfile> numGamesComparator = new Comparator<PlayerProfile>(){
+
+	public int compare(PlayerProfile player1, PlayerProfile player2){
+	   int playerGamesPlayed1 = player1.getGamesPlayed();//Integers to hold damage done.
+	   int playerGamesPlayed2 = player2.getGamesPlayed();	
+
+	   return playerGamesPlayed1 - playerGamesPlayed2;
+    }};
 	
 }
