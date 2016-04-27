@@ -240,7 +240,7 @@ public class PlayerProfile {
 	   return (int) (playerDamage2 - playerDamage1);
     }};
     
-    //Comparator for sorting player profile objects in ArrayList numerically by damage done per game.
+    //Comparator for sorting player profile objects in ArrayList numerically by games played.
     public static Comparator<PlayerProfile> numGamesComparator = new Comparator<PlayerProfile>(){
 
 	public int compare(PlayerProfile player1, PlayerProfile player2){

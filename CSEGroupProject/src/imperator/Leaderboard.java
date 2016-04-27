@@ -164,7 +164,7 @@ public class Leaderboard {
 		bw.write(leaderboard);
 		bw.close();
 
-		System.out.println("Done writing");
+		System.out.println("\nDone writing");
 		
 	}
 	
@@ -282,6 +282,23 @@ public class Leaderboard {
 			System.out.println("Error in sort: field passed not recognized.");
 
 	}
-	//write sort() methods to sort the profile array on one of the stats, print that sorted array (leaderboard)
+	
+	public void print(){
+		String printStr;
+		this.sort("numKills"); //Leaderboard to be displayed by top kills by default.
+		printStr = this.toString();
+		StringTokenizer token = new StringTokenizer(printStr);
+		System.out.println("|Name|\t|Class|\t|Kills|\t|Deaths|\t|Moves/PG|\t|Damage/PG|\t|Played|");
+		for(int ii = 0; ii < profileArray.size(); ii++){
+			System.out.print(token.nextToken("\t") + "\t");
+			System.out.print(token.nextToken("\t")+ "\t");
+			System.out.print(token.nextToken("\t")+ "\t");
+			System.out.print(token.nextToken("\t")+ "\t\t");
+			System.out.print(token.nextToken("\t")+ "\t\t");
+			System.out.print(token.nextToken("\t")+ "\t\t");
+			System.out.print(token.nextToken("\n")+ "\t\t");
+		}
+		
+	}
 	
 }

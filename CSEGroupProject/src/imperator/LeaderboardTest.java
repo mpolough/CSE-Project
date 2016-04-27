@@ -234,5 +234,23 @@ public class LeaderboardTest {
 		assertEquals(testString,board.toString()); //test passes because the field is unsorted w/
 												   //error message passed to console.
 	}
+	
+	@Test
+	public void testPrint() {
+		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 5.5, 1.5, 5);
+		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.9, 5);
+		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 6, 1.0, 3.0, 1);
+		
+		Leaderboard board = new Leaderboard();
+		board.addNewProfile(player2);
+		board.addNewProfile(player1);
+		board.addNewProfile(player3);
+
+		board.print();
+		String testString = "Allison	Warrior	3	3	2.6	2.9	5"
+				+ "\nXander	Rogue	2	2	5.5	1.5	5"
+				+ "\nJim	Mage	1	6	1.0	3.0	1\n";
+		assertEquals(testString,board.toString());
+	}
 
 }
