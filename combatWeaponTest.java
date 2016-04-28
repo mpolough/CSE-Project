@@ -78,6 +78,40 @@ public class combatWeaponTest {
 		assertEquals(true,	obj1.inRange(2));
 	}
 	
+	@Test
+	public void setEffectTest(){
+		combatWeapon obj1 = new combatWeapon(2, "knife", 1, 3);
+		obj1.setEffect("min");
+		assertEquals("min",	obj1.getEffect());
+	}
+	
+	@Test
+	public void getEffectTest(){
+		combatWeapon obj1 = new combatWeapon(2, "knife", 1, 3);
+		obj1.setEffect("max");
+		assertEquals("max",	obj1.getEffect());
+	}
+	
+	@Test
+	public void setEffectChanceTest(){
+		combatWeapon obj1 = new combatWeapon(2, "knife", 1, 3);
+		obj1.setEffectChance(10);
+		assertEquals(10, obj1.getEffectChance(),0.1);
+	}
+	
+	@Test
+	public void getEffectChanceTest(){
+		combatWeapon obj1 = new combatWeapon(2, "knife", 1, 3);
+		obj1.setEffectChance(13);
+		assertEquals(13, obj1.getEffectChance(),0.1);
+	}
+	
+	
+	@Test
+	public void checkChanceTest(){
+		combatWeapon obj1 = new combatWeapon(2, "knife", 1, 3);
+		assertEquals(true, obj1.checkChance(1));
+	}
 
 
 }

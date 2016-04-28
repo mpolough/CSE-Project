@@ -64,6 +64,20 @@ public class combatClassTest {
 		assertEquals(0, obj1.getHealthPoints(),0.1);
 	}
 	
+	@Test
+	public void getStatusTest(){
+		combatClass obj1 = new combatClass(15, "player", 5);
+		obj1.setStatus("hard");
+		assertEquals("hard", obj1.getStatus());
+	}
+	
+	@Test
+	public void setStatusTest(){
+		combatClass obj1 = new combatClass(15, "player", 5);
+		obj1.setStatus("set");
+		assertEquals("set", obj1.getStatus());
+	}
+	
 	
 
 	

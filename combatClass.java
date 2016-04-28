@@ -9,6 +9,7 @@ public class combatClass {
 	private double healthPoints; // hp
 	private String type; // type of character
 	private double armor;
+	private String status = "none";
 	
 	/** constructor that will set all class variables 
 	 * 
@@ -20,6 +21,21 @@ public class combatClass {
 		armor = resistance;
 	}
 	
+	/**  getStatus shows the Status
+	 * 
+	 * @return status
+	 */
+	public String getStatus(){
+		return status;
+	}
+	
+	/**  setStatus sets the Status
+	 * 
+	 * @param newStatus
+	 */
+	public void setStatus(String newStatus){
+		status = newStatus;
+	}
 	
 	/**  getHealthPoints shows the health point of the character
 	 * 

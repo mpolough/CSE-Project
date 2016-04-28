@@ -9,6 +9,8 @@ public class combatWeapon {
 	private String name;
 	private double minRange;
 	private double maxRange;
+	private String effect;
+	private double effectChance;// was effectChane
 	
 	/** combatWeapon is the constructor of the combatWeapon class
 	 * 
@@ -23,8 +25,7 @@ public class combatWeapon {
 		minRange = min;
 		maxRange = max;
 	}
-	
-	
+		
 	/** getDamage returns the damage of the character
 	 * 
 	 * @return damage
@@ -109,6 +110,56 @@ public class combatWeapon {
 		}
 		return result;
 	}
+	
+	
+	/** setEffect sets the effect
+	 * 
+	 * @param newEffect
+	 */
+	public void setEffect(String newEffect){
+		effect = newEffect;
+	}
+	
+	
+	/** getEffect returns effect
+	 * 
+	 * @return effect
+	 */
+	public String getEffect(){
+		return effect;
+	}
+	
+	
+	/** setEffectChance sets the effect Chance
+	 * 
+	 * @param  newEffectChance;
+	 */
+	public void setEffectChance(double newEffectChance){
+		effectChance = newEffectChance;
+	}
+	
+	/** getEffectChance gets the effect Chance
+	 * 
+	 * @return  effectChance;
+	 */
+	public double getEffectChance(){
+		return effectChance;
+	}
+	
+	public boolean checkChance(double effectChance){
+		
+		int resistance = (int )(Math.random() * 10 + 0);
+		
+		double result = effectChance - resistance;
+		
+		if (result <= 0){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
 	
 	public static void main (String[]args){
 		combatWeapon obj1 = new combatWeapon(2, "knife", 1, 3);
