@@ -10,7 +10,7 @@ public class LeaderboardTest {
 
 	@Test
 	public void testReader() throws IOException {
-		PlayerProfile profile = new PlayerProfile("Joe", "Mage");
+		PlayerProfile profile = new PlayerProfile("Joe");
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(profile);
 		board.writer();
@@ -32,9 +32,9 @@ public class LeaderboardTest {
 
 	@Test
 	public void testGetProfile() throws IOException {
-		PlayerProfile profile = new PlayerProfile("Bob", "Mage");
+		PlayerProfile profile = new PlayerProfile("Bob");
 
-		PlayerProfile profile2 = new PlayerProfile("Smith", "Warrior");
+		PlayerProfile profile2 = new PlayerProfile("Smith");
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(profile);
@@ -47,8 +47,8 @@ public class LeaderboardTest {
 
 	@Test
 	public void testUpdate() throws IOException {
-		PlayerProfile player1 = new PlayerProfile("Joe", "Mage");
-		PlayerProfile player2 = new PlayerProfile("John", "Rogue");
+		PlayerProfile player1 = new PlayerProfile("Joe");
+		PlayerProfile player2 = new PlayerProfile("John");
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
 		board.addNewProfile(player2);
@@ -64,15 +64,15 @@ public class LeaderboardTest {
 
 	@Test
 	public void testToString() {
-		PlayerProfile player1 = new PlayerProfile("Jack", "Warrior");
+		PlayerProfile player1 = new PlayerProfile("Jack");
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
-		assertEquals("Jack	Warrior	0	0	0.0	0.0	0\n", board.toString());
+		assertEquals("Jack	0	0	0.0	0.0	0\n", board.toString());
 	}
 
 	@Test
 	public void testWriter() throws IOException {
-		PlayerProfile profile = new PlayerProfile("Joe", "Mage");
+		PlayerProfile profile = new PlayerProfile("Joe");
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(profile);
 		board.writer();
@@ -83,7 +83,7 @@ public class LeaderboardTest {
 	@Test
 	public void testAddNewProfile() throws IOException {
 		//Writer works but writer isn't working with this specific test.
-		PlayerProfile profile = new PlayerProfile("Joe", "Rogue");
+		PlayerProfile profile = new PlayerProfile("Joe");
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(profile);
 		board.writer();
@@ -92,9 +92,9 @@ public class LeaderboardTest {
 	
 	@Test
 	public void testSortName() throws IOException {
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.6, 3);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
@@ -102,17 +102,17 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 		
 		board.sort("name");
-		String testString = "Xander	Rogue	2	2	2.5	2.5	2"
-				+ "\nJim	Mage	1	1	1.0	1.0	1"
-				+ "\nAllison	Warrior	3	3	2.6	2.6	3\n";
+		String testString = "Xander	2	2	2.5	2.5	2"
+				+ "\nJim	1	1	1.0	1.0	1"
+				+ "\nAllison3	3	2.6	2.6	3\n";
 		assertEquals(testString,board.toString());
 	}
 	
 	@Test
 	public void testSortClass() throws IOException {
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.6, 3);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
@@ -120,17 +120,17 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 		
 		board.sort("class");
-		String testString = "Allison	Warrior	3	3	2.6	2.6	3"
-				+ "\nXander	Rogue	2	2	2.5	2.5	2"
-				+ "\nJim	Mage	1	1	1.0	1.0	1\n";
+		String testString = "Allison	3	3	2.6	2.6	3"
+				+ "\nXander	2	2	2.5	2.5	2"
+				+ "\nJim	1	1	1.0	1.0	1\n";
 		assertEquals(testString,board.toString());
 	}
 	
 	@Test
 	public void testSortKills() throws IOException {
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.6, 3);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
@@ -138,17 +138,17 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 		
 		board.sort("numKills");
-		String testString = "Allison	Warrior	3	3	2.6	2.6	3"
-				+ "\nXander	Rogue	2	2	2.5	2.5	2"
-				+ "\nJim	Mage	1	1	1.0	1.0	1\n";
+		String testString = "Allison	3	3	2.6	2.6	3"
+				+ "\nXander	2	2	2.5	2.5	2"
+				+ "\nJim	1	1	1.0	1.0	1\n";
 		assertEquals(testString,board.toString());
 	}
 	
 	@Test
 	public void testSortDeaths() throws IOException {
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.6, 3);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
@@ -156,17 +156,17 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 		
 		board.sort("numDeaths");
-		String testString = "Allison	Warrior	3	3	2.6	2.6	3"
-				+ "\nXander	Rogue	2	2	2.5	2.5	2"
-				+ "\nJim	Mage	1	1	1.0	1.0	1\n";
+		String testString = "Allison	3	3	2.6	2.6	3"
+				+ "\nXander	2	2	2.5	2.5	2"
+				+ "\nJim	1	1	1.0	1.0	1\n";
 		assertEquals(testString,board.toString());
 	}
 	
 	@Test
 	public void testSortMoves() throws IOException {
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.6, 3);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
@@ -174,17 +174,17 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 		
 		board.sort("movesPerGame");
-		String testString = "Allison	Warrior	3	3	2.6	2.6	3"
-				+ "\nXander	Rogue	2	2	2.5	2.5	2"
-				+ "\nJim	Mage	1	1	1.0	1.0	1\n";
+		String testString = "Allison	3	3	2.6	2.6	3"
+				+ "\nXander	2	2	2.5	2.5	2"
+				+ "\nJim	1	1	1.0	1.0	1\n";
 		assertEquals(testString,board.toString());
 	}
 	
 	@Test
 	public void testSortDamage() throws IOException {
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.6, 3);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
@@ -192,17 +192,17 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 		
 		board.sort("damagePerGame");
-		String testString = "Allison	Warrior	3	3	2.6	2.6	3"
-				+ "\nXander	Rogue	2	2	2.5	2.5	2"
-				+ "\nJim	Mage	1	1	1.0	1.0	1\n";
+		String testString = "Allison	3	3	2.6	2.6	3"
+				+ "\nXander	2	2	2.5	2.5	2"
+				+ "\nJim	1	1	1.0	1.0	1\n";
 		assertEquals(testString,board.toString());
 	}
 	
 	@Test
 	public void testSortGamesPlayed() throws IOException {
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.6, 3);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
@@ -210,17 +210,17 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 		
 		board.sort("gamesPlayed");
-		String testString = "Allison	Warrior	3	3	2.6	2.6	3"
-				+ "\nXander	Rogue	2	2	2.5	2.5	2"
-				+ "\nJim	Mage	1	1	1.0	1.0	1\n";
+		String testString = "Allison	3	3	2.6	2.6	3"
+				+ "\nXander	2	2	2.5	2.5	2"
+				+ "\nJim	1	1	1.0	1.0	1\n";
 		assertEquals(testString,board.toString());
 	}
 	
 	@Test
 	public void testSortBadFieldError() throws IOException {
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.6, 3);
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 1, 1.0, 1.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
+		PlayerProfile player3 = new PlayerProfile("Allison",3, 3, 2.6, 2.6, 3);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player1);
@@ -228,18 +228,18 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 		
 		board.sort("invalidField");
-		String testString = "Jim	Mage	1	1	1.0	1.0	1"
-				+ "\nXander	Rogue	2	2	2.5	2.5	2"
-				+ "\nAllison	Warrior	3	3	2.6	2.6	3\n";
+		String testString = "Jim	1	1	1.0	1.0	1"
+				+ "\nXander	2	2	2.5	2.5	2"
+				+ "\nAllison	3	3	2.6	2.6	3\n";
 		assertEquals(testString,board.toString()); //test passes because the field is unsorted w/
 												   //error message passed to console.
 	}
 	
 	@Test
 	public void testPrint() {
-		PlayerProfile player2 = new PlayerProfile("Xander", "Rogue", 2 , 2, 5.5, 1.5, 5);
-		PlayerProfile player3 = new PlayerProfile("Allison", "Warrior", 3, 3, 2.6, 2.9, 5);
-		PlayerProfile player1 = new PlayerProfile("Jim", "Mage", 1, 6, 1.0, 3.0, 1);
+		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 5.5, 1.5, 5);
+		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.9, 5);
+		PlayerProfile player1 = new PlayerProfile("Jim", 1, 6, 1.0, 3.0, 1);
 		
 		Leaderboard board = new Leaderboard();
 		board.addNewProfile(player2);
@@ -247,9 +247,9 @@ public class LeaderboardTest {
 		board.addNewProfile(player3);
 
 		board.print();
-		String testString = "Allison	Warrior	3	3	2.6	2.9	5"
-				+ "\nXander	Rogue	2	2	5.5	1.5	5"
-				+ "\nJim	Mage	1	6	1.0	3.0	1\n";
+		String testString = "Allison	3	3	2.6	2.9	5"
+				+ "\nXander	2	2	5.5	1.5	5"
+				+ "\nJim	1	6	1.0	3.0	1\n";
 		assertEquals(testString,board.toString());
 	}
 

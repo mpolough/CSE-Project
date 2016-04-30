@@ -9,7 +9,6 @@ import java.util.Comparator;
 public class PlayerProfile {
 
 	private String playerName;	//Name of that player character
-	private String playerClass;	//Class of the player; warrior, wizard, ranger etc.
 	private int numKills;		//Variable to keep track of kills (games won).
 	private int numDeaths; 		//Variable to keep track of number of deaths (games lost).
 	private double movesPerGame;//Variable to keep track of average num of moves performed for all games.
@@ -19,7 +18,6 @@ public class PlayerProfile {
 
 	public PlayerProfile() {
 		this.playerName = "NULL";
-		this.playerClass = "NULL";
 		this.numKills = 0;
 		this.numDeaths = 0;
 		this.movesPerGame = 0.0;
@@ -33,9 +31,8 @@ public class PlayerProfile {
 	 * @param playerName name of the player character/profile
 	 * @param playerClass class selected by the player for the profile.
 	 */
-	public PlayerProfile(String playerName, String playerClass) {
+	public PlayerProfile(String playerName) {
 		this.playerName = playerName;
-		this.playerClass = playerClass;
 		this.numKills = 0;
 		this.numDeaths = 0;
 		this.movesPerGame = 0;
@@ -53,10 +50,9 @@ public class PlayerProfile {
 	 * @param damage	Some value to set damage to.
 	 * @param gamesPlayed	Some value to set games played to.
 	 */
-	public PlayerProfile(String playerName, String playerClass, int numKills, int numDeaths, 
+	public PlayerProfile(String playerName, int numKills, int numDeaths, 
 			double moves, double damage, int gamesPlayed) {
 		this.playerName = playerName;
-		this.playerClass = playerClass;
 		this.numKills = numKills;
 		this.numDeaths = numDeaths;
 		this.movesPerGame = moves;
@@ -80,22 +76,7 @@ public class PlayerProfile {
 		this.playerName = playerName;
 	}
 	
-	/**
-	 * Getter for variable playerClass
-	 * @return string playerClass
-	 */
-	public String getPlayerClass() {
-		return playerClass;
-	}
-	
-	/**
-	 * Setter for variable playerClass
-	 * @param playerClass string name of the character class
-	 */
-	public void setPlayerClass(String playerClass) {
-		this.playerClass = playerClass;
-	}
-	
+
 	/**
 	 * Getter for variable numKills
 	 * @return int variable numKills
@@ -186,15 +167,6 @@ public class PlayerProfile {
 	   return playerName2.compareTo(playerName1);
     }};
     
-    //Comparator for sorting player profile objects in ArrayList alphabetically by player class.
-    public static Comparator<PlayerProfile> classComparator = new Comparator<PlayerProfile>(){
-
-	public int compare(PlayerProfile player1, PlayerProfile player2){
-	   String playerClass1 = player1.getPlayerClass().toUpperCase();//Strings to hold player class
-	   String playerClass2 = player2.getPlayerClass().toUpperCase();	
-
-	   return playerClass2.compareTo(playerClass1);
-    }};
     
     //Comparator for sorting player profile objects in ArrayList numerically by number of kills.
     public static Comparator<PlayerProfile> killsComparator = new Comparator<PlayerProfile>(){

@@ -43,7 +43,6 @@ public class Leaderboard {
 	    		PlayerProfile tempProfile = new PlayerProfile();
 	    		StringTokenizer tk = new StringTokenizer(tempString);
 	    		tempProfile.setPlayerName(tk.nextToken("\t"));
-	    		tempProfile.setPlayerClass(tk.nextToken("\t"));
 	    		tempProfile.setNumKills(Integer.parseInt(tk.nextToken("\t")));
 	    		tempProfile.setNumDeaths(Integer.parseInt(tk.nextToken("\t")));
 	    		tempProfile.setMovesPerGame(Double.parseDouble(tk.nextToken("\t")));
@@ -149,14 +148,13 @@ public class Leaderboard {
 		for(int index = 0; index < profileArray.size(); index++){
 			PlayerProfile tempProfile = profileArray.get(index);
 			String name = tempProfile.getPlayerName();
-			String playerClass = tempProfile.getPlayerClass();
 			int numKills = tempProfile.getNumKills();
 			int numDeaths = tempProfile.getNumDeaths();
 			double movesPerGame = tempProfile.getMovesPerGame();
 			double damageDonePerGame = tempProfile.getDamageDonePerGame();
 			int gamesPlayed = tempProfile.getGamesPlayed();
 			
-			leaderboard += name + "\t" + playerClass + "\t" + numKills + "\t" + numDeaths + "\t" +
+			leaderboard += name + "\t" + numKills + "\t" + numDeaths + "\t" +
 					movesPerGame + "\t" + damageDonePerGame + "\t" + gamesPlayed + "\n";
 		}
 		
@@ -214,14 +212,13 @@ public class Leaderboard {
 		for(int index = 0; index < profileArray.size(); index++){
 			PlayerProfile tempProfile = profileArray.get(index);
 			String name = tempProfile.getPlayerName();
-			String playerClass = tempProfile.getPlayerClass();
 			int numKills = tempProfile.getNumKills();
 			int numDeaths = tempProfile.getNumDeaths();
 			double movesPerGame = tempProfile.getMovesPerGame();
 			double damageDonePerGame = tempProfile.getDamageDonePerGame();
 			int gamesPlayed = tempProfile.getGamesPlayed();
 			
-			leaderboard += name + "\t" + playerClass + "\t" + numKills + "\t" + numDeaths + "\t" +
+			leaderboard += name + "\t" + numKills + "\t" + numDeaths + "\t" +
 					movesPerGame + "\t" + damageDonePerGame + "\t" + gamesPlayed + "\n";
 		}
 		return leaderboard;
@@ -240,12 +237,6 @@ public class Leaderboard {
 		//Sort based on player name.
 		if(token == "name"){
 			Collections.sort(profileArray, PlayerProfile.nameComparator);
-			sorted++;
-		}
-		
-		//sort based on player class.
-		if(token == "class"){
-			Collections.sort(profileArray, PlayerProfile.classComparator);
 			sorted++;
 		}
 		
@@ -291,7 +282,6 @@ public class Leaderboard {
 		System.out.println("|Name|\t|Class|\t|Kills|\t|Deaths|\t|Moves/PG|\t|Damage/PG|\t|Played|");
 		for(int ii = 0; ii < profileArray.size(); ii++){
 			System.out.print(token.nextToken("\t") + "\t");
-			System.out.print(token.nextToken("\t")+ "\t");
 			System.out.print(token.nextToken("\t")+ "\t");
 			System.out.print(token.nextToken("\t")+ "\t\t");
 			System.out.print(token.nextToken("\t")+ "\t\t");
