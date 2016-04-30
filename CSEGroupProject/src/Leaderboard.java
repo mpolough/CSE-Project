@@ -1,14 +1,16 @@
 package imperator;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.StringTokenizer;
 
 /**
  * Leaderboard works by reading in the text file "leaderboard.txt", with tab delimited fields,  
- * to create a profile object array to store the leaderboard data to be manipulated by the game.
- * At the game end, the game will call update() to update any changes to the leaderboard, and update
+ * to create a profile object array to store the leader board data to be manipulated by the game.
+ * At the game end, the game will call update() to update any changes to the leader board, and update
  * the text file to store these changes persistently. There is also a print() method that displays the 
- * leaderboard.
+ * leader board.
  * @author Chris Ward and Fabian Hinojosa
  *
  */
@@ -41,7 +43,6 @@ public class Leaderboard {
 	    		PlayerProfile tempProfile = new PlayerProfile();
 	    		StringTokenizer tk = new StringTokenizer(tempString);
 	    		tempProfile.setPlayerName(tk.nextToken("\t"));
-	    		tempProfile.setPlayerClass(tk.nextToken("\t"));
 	    		tempProfile.setNumKills(Integer.parseInt(tk.nextToken("\t")));
 	    		tempProfile.setNumDeaths(Integer.parseInt(tk.nextToken("\t")));
 	    		tempProfile.setMovesPerGame(Double.parseDouble(tk.nextToken("\t")));
@@ -61,7 +62,7 @@ public class Leaderboard {
 		//if the file is not found, create empty file "leaderboard.txt"
 	    catch(IOException e){
 	    	PrintWriter writer = new PrintWriter("leaderboard.txt", "UTF-8");
-			writer.println("Name	Class	0	0	0.0	0.0	0");
+			writer.println("Name	0	0	0.0	0.0	0");
 			writer.close();
 	    }
 	}
@@ -127,10 +128,10 @@ public class Leaderboard {
 	}
 	
 	/**
-	 * Print method to display the leaderboard.
+	 * Print method to display the leader board.
 	 */
-	public void print(){
-		System.out.println(profileArray.toString());
+	public void print(Leaderboard leaderboard){
+		System.out.println(leaderboard.toString());
 	}
 	
 	/**
@@ -147,37 +148,52 @@ public class Leaderboard {
 		for(int index = 0; index < profileArray.size(); index++){
 			PlayerProfile tempProfile = profileArray.get(index);
 			String name = tempProfile.getPlayerName();
-			String playerClass = tempProfile.getPlayerClass();
 			int numKills = tempProfile.getNumKills();
 			int numDeaths = tempProfile.getNumDeaths();
 			double movesPerGame = tempProfile.getMovesPerGame();
 			double damageDonePerGame = tempProfile.getDamageDonePerGame();
 			int gamesPlayed = tempProfile.getGamesPlayed();
 			
-			leaderboard += name + "\t" + playerClass + "\t" + numKills + "\t" + numDeaths + "\t" +
+			leaderboard += name + "\t" + numKills + "\t" + numDeaths + "\t" +
 					movesPerGame + "\t" + damageDonePerGame + "\t" + gamesPlayed + "\n";
 		}
 		
-		//Write the leaderboard string to the file.
+		//Write the leader board string to the file.
 		bw.write(leaderboard);
 		bw.close();
 
-		System.out.println("Done writing");
+		System.out.println("\nDone writing");
 		
 	}
 	
+	/**
+	 * Returns value variable indexp1
+	 * @return indexp1 index of player 1
+	 */
 	public int getIndexP1() {
 		return indexP1;
 	}
 
+	/**
+	 * Sets value indexP1
+	 * @param indexP1 int value to sex p1 to.
+	 */
 	public void setIndexP1(int indexP1) {
 		this.indexP1 = indexP1;
 	}
 
+	/**
+	 * Returns value of variable indexP2
+	 * @return value of indexP2
+	 */
 	public int getIndexP2() {
 		return indexP2;
 	}
 
+	/**
+	 * Sets value of indexP2
+	 * @param indexP2 index of player 2
+	 */
 	public void setIndexP2(int indexP2) {
 		this.indexP2 = indexP2;
 	}
@@ -191,7 +207,91 @@ public class Leaderboard {
 		profileArray.add(newPlayer);
 	}
 	
+	public String toString(){
+		String leaderboard = "";
+		for(int index = 0; index < profileArray.size(); index++){
+			PlayerProfile tempProfile = profileArray.get(index);
+			String name = tempProfile.getPlayerName();
+			int numKills = tempProfile.getNumKills();
+			int numDeaths = tempProfile.getNumDeaths();
+			double movesPerGame = tempProfile.getMovesPerGame();
+			double damageDonePerGame = tempProfile.getDamageDonePerGame();
+			int gamesPlayed = tempProfile.getGamesPlayed();
+			
+			leaderboard += name + "\t" + numKills + "\t" + numDeaths + "\t" +
+					movesPerGame + "\t" + damageDonePerGame + "\t" + gamesPlayed + "\n";
+		}
+		return leaderboard;
+	}
 	
-	//write sort() methods to sort the profile array on one of the stats, print that sorted array (leaderboard)
+	/**
+	 * Sorts the profile array list based on a string input of the 
+	 * parameter for the leader board to be sorted by. Possible inputs are
+	 * "name" for alphabetic sorting of player name, "class" for player class, and
+	 * numeric sorting for "numKills", "numDeaths", "damagePerGame", "movesPerGame", 
+	 * and "gamesPlayed"
+	 * @param token String to pass the name of the field for sorting by.
+	 */
+	public void sort(String token){
+		int sorted = 0;
+		//Sort based on player name.
+		if(token == "name"){
+			Collections.sort(profileArray, PlayerProfile.nameComparator);
+			sorted++;
+		}
+		
+		//sort based on player kills.
+		if(token == "numKills"){
+			Collections.sort(profileArray, PlayerProfile.killsComparator);
+			sorted++;
+		}
+		
+		//sort based on number of player deaths.
+		if(token == "numDeaths"){
+			Collections.sort(profileArray, PlayerProfile.deathsComparator);
+			sorted++;
+		}
+		
+		//sort based on damage done per game by player.
+		if(token == "damagePerGame"){
+			Collections.sort(profileArray, PlayerProfile.damagePerGameComparator);
+			sorted++;	
+		}
+		
+		//sort based on number of player moves per game.
+		if(token == "movesPerGame"){
+			Collections.sort(profileArray, PlayerProfile.movesPerGameComparator);
+			sorted++;
+		}
+		//sort based on number of games played by player.
+		if(token == "gamesPlayed"){
+			Collections.sort(profileArray, PlayerProfile.numGamesComparator);
+			sorted++;	
+		}
+		
+		if(sorted == 0)
+			System.out.println("Error in sort: field passed not recognized.");
+
+	}
+	
+	/**
+	 * Prints the leaderboard in a formatted output.
+	 */
+	public void print(){
+		String printStr;
+		this.sort("numKills"); //Leaderboard to be displayed by top kills by default.
+		printStr = this.toString();
+		StringTokenizer token = new StringTokenizer(printStr);
+		System.out.println("|Name|\t|Kills|\t|Deaths|\t|Moves/PG|\t|Damage/PG|\t\t|Played|");
+		for(int ii = 0; ii < profileArray.size(); ii++){
+			System.out.print(token.nextToken("\t") + "\t");
+			System.out.print(token.nextToken("\t")+ "\t");
+			System.out.print(token.nextToken("\t")+ "\t\t");
+			System.out.print(token.nextToken("\t")+ "\t\t");
+			System.out.print(token.nextToken("\t")+ "\t\t");
+			System.out.print(token.nextToken("\n")+ "\t\t");
+		}
+		
+	}
 	
 }
