@@ -168,7 +168,7 @@ public class Leaderboard {
 	
 	/**
 	 * Returns value variable indexp1
-	 * @return indexp1
+	 * @return indexp1 index of player 1
 	 */
 	public int getIndexP1() {
 		return indexP1;
@@ -192,7 +192,7 @@ public class Leaderboard {
 
 	/**
 	 * Sets value of indexP2
-	 * @param indexP2
+	 * @param indexP2 index of player 2
 	 */
 	public void setIndexP2(int indexP2) {
 		this.indexP2 = indexP2;
@@ -274,6 +274,9 @@ public class Leaderboard {
 
 	}
 	
+	/**
+	 * Prints the leaderboard in a formatted output.
+	 */
 	public void print(){
 		String printStr;
 		this.sort("numKills"); //Leaderboard to be displayed by top kills by default.

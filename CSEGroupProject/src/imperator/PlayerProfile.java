@@ -159,7 +159,7 @@ public class PlayerProfile {
 	
 	//Comparator for sorting player profile objects in ArrayList alphabetically by player name.
     public static Comparator<PlayerProfile> nameComparator = new Comparator<PlayerProfile>(){
-
+    
 	public int compare(PlayerProfile player1, PlayerProfile player2){
 	   String playerName1 = player1.getPlayerName().toUpperCase();	//Strings to hold playerNames
 	   String playerName2 = player2.getPlayerName().toUpperCase();	
