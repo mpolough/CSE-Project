@@ -92,7 +92,7 @@ public class ImperatorMain
         	case 4:
         		System.out.println("enter your name:");
         		String dn = reader.next();
-        		player[i] = new PlayerProfile(dn, "mage");
+        		player[i] = new PlayerProfile(dn);
         		board.addNewProfile(player[i]);
         		i++;
         		try {
