@@ -104,27 +104,10 @@ public class LeaderboardTest {
 		board.sort("name");
 		String testString = "Xander	2	2	2.5	2.5	2"
 				+ "\nJim	1	1	1.0	1.0	1"
-				+ "\nAllison3	3	2.6	2.6	3\n";
+				+ "\nAllison	3	3	2.6	2.6	3\n";
 		assertEquals(testString,board.toString());
 	}
 	
-	@Test
-	public void testSortClass() throws IOException {
-		PlayerProfile player1 = new PlayerProfile("Jim", 1, 1, 1.0, 1.0, 1);
-		PlayerProfile player2 = new PlayerProfile("Xander", 2 , 2, 2.5, 2.5, 2);
-		PlayerProfile player3 = new PlayerProfile("Allison", 3, 3, 2.6, 2.6, 3);
-		
-		Leaderboard board = new Leaderboard();
-		board.addNewProfile(player1);
-		board.addNewProfile(player2);
-		board.addNewProfile(player3);
-		
-		board.sort("class");
-		String testString = "Allison	3	3	2.6	2.6	3"
-				+ "\nXander	2	2	2.5	2.5	2"
-				+ "\nJim	1	1	1.0	1.0	1\n";
-		assertEquals(testString,board.toString());
-	}
 	
 	@Test
 	public void testSortKills() throws IOException {
